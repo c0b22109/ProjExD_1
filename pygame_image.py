@@ -15,22 +15,16 @@ def main():
     kk_img = pg.transform.flip(kk_img, True, False)
     tmr = 0
     bg_img_x_coordinate = 0
-    flag = False
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
             
-        bg_img_x_coordinate = -(tmr % 1600)
-        if bg_img_x_coordinate == 0:
-            flag = not flag
+        bg_img_x_coordinate = -(tmr % 3200)
+        screen.blit(bg_img, [bg_img_x_coordinate, 0])
+        screen.blit(bg_img_fliped, [bg_img_x_coordinate + 1600, 0])
+        screen.blit(bg_img, [bg_img_x_coordinate + 3200, 0])
+        screen.blit(bg_img_fliped, [bg_img_x_coordinate + 4800, 0])
 
-        if flag:            
-            screen.blit(bg_img, [bg_img_x_coordinate, 0])
-            screen.blit(bg_img_fliped, [bg_img_x_coordinate + 1600, 0])
-        else:
-            screen.blit(bg_img_fliped, [bg_img_x_coordinate, 0])
-            screen.blit(bg_img, [bg_img_x_coordinate + 1600, 0])
-        
         screen.blit(kk_img, [300, 200])
         pg.display.update()
         tmr += 1        
