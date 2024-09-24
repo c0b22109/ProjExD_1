@@ -10,14 +10,27 @@ def main():
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")
+    bg_img_fliped = pg.transform.flip(bg_img, True, False)
     kk_img = pg.image.load("fig/3.png")
     kk_img = pg.transform.flip(kk_img, True, False)
     tmr = 0
+    bg_img_x_coordinate = 0
+    flag = False
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
+            
+        bg_img_x_coordinate = -(tmr % 1600)
+        if bg_img_x_coordinate == 0:
+            flag = not flag
 
-        screen.blit(bg_img, [-(tmr % 800), 0])
+        if flag:            
+            screen.blit(bg_img, [bg_img_x_coordinate, 0])
+            screen.blit(bg_img_fliped, [bg_img_x_coordinate + 1600, 0])
+        else:
+            screen.blit(bg_img_fliped, [bg_img_x_coordinate, 0])
+            screen.blit(bg_img, [bg_img_x_coordinate + 1600, 0])
+        
         screen.blit(kk_img, [300, 200])
         pg.display.update()
         tmr += 1        
