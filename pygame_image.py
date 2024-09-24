@@ -23,12 +23,11 @@ def main():
         screen.blit(bg_img, [bg_img_x_coordinate, 0])
         screen.blit(bg_img_fliped, [bg_img_x_coordinate + 1600, 0])
         screen.blit(bg_img, [bg_img_x_coordinate + 3200, 0])
-        screen.blit(bg_img_fliped, [bg_img_x_coordinate + 4800, 0])
 
         screen.blit(kk_img, [300, 200])
         pg.display.update()
         tmr += 1        
-        clock.tick(200)
+        clock.tick(400)
 
 
 if __name__ == "__main__":
