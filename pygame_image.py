@@ -19,6 +19,8 @@ def main():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [-x, 0])
+        if tmr >= 800:
+            screen.blit(bg_img, [1600 - x, 0])
         screen.blit(kk_img, [300, 200])
         pg.display.update()
         tmr += 1        
